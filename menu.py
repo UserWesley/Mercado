@@ -100,8 +100,34 @@ while rodar_programa:
 
     #Condição para atualizar produto
     elif(escolha_numero == 5):
-        produto.index()
-        print("Atualizar Produto",end="\n\n")
+       
+        #Verificando se a lista esta vazia   
+         if not lista_produto:
+            print("lista vazia")
+         else:
+            #listando todos os produtos 
+            for indice, produto in enumerate(lista_produto):
+                print("codigo:", indice,"nome do produto:", produto)
+            print("Atualizar Produto",end="\n\n")
+            
+            #recebendo codigo do produto que deseja alterar 
+            codigo_do_produto = input("digite o valor do codigo que deseja aleterar:")
+            try: 
+
+                #convertendo valor do string para inteiro
+                codigo_produto_inteiro= int(codigo_do_produto)
+            except:
+                print("digite algum valor correto")
+                continue 
+            #verificando se o valor do indice existe
+            if codigo_produto_inteiro > len(lista_produto):
+                print("valor codigo não existe")
+
+            else:
+                #realizando alteração do nome do produto pelo indice
+                for indice, produto in enumerate(lista_produto):
+                    if indice == codigo_produto_inteiro:
+                        lista_produto[indice] = input("digite o novo nome:")
 
     #COndição para sair
     elif(escolha_numero == 6):
