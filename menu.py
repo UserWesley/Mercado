@@ -39,8 +39,12 @@ while rodar_programa:
         #Recebendo do usuário o nome do produto
         nome_produto = input("Digite o nome do Produto:")
         #Adicionado o nome do produto a lista
-        lista_produto.append(nome_produto)
-        print("Nome do Produto cadastrado:", nome_produto,"\n")
+        if nome_produto in lista_produto:
+            print("Produto já esta na lista")
+            continue
+        else:
+            lista_produto.append(nome_produto)
+            print("Nome do Produto cadastrado:", nome_produto,"\n")
 
     #COndição para lista Produtos
     elif(escolha_numero == 2):
