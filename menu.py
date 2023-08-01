@@ -1,4 +1,3 @@
-import teste
 #Lista de produto iniciando vazio
 lista_produto = ["Feijao", "Arroz"]
 
