@@ -45,6 +45,15 @@ def verifica_produto_lista(nome_produto):
     else:
         return False
 
+#Metodo para alterar valor da lista
+def alterar_produto(codigo_produto,novo_nome_produto):
+    
+    lista_produto[codigo_produto] = novo_nome_produto
+    if novo_nome_produto :
+        return False
+    else:
+        return True
+    
 #Remover produto
 def remover_produto(codigo_produto_excluido_inteiro):
     #Adicionando indice para ajudar na removoção e evitar erros de digitação 
@@ -186,11 +195,12 @@ while rodar_programa:
                 print("valor codigo não existe")
 
             else:
-                #realizando alteração do nome do produto pelo indice
-                for indice, produto in enumerate(lista_produto):
-                    if indice == codigo_produto_inteiro:
-                        lista_produto[indice] = input("digite o novo nome:")
-
+                novo_nome_produto = input("Digite um novo nome para o produto :")
+                if alterar_produto(codigo_produto_inteiro, novo_nome_produto):
+                    print("Produto alterado !")
+                else:
+                    print("Produto não alterado")
+                
     #COndição para sair
     elif(escolha_numero == 6):
         print("Sair",end="\n\n")
