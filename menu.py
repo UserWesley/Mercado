@@ -119,6 +119,10 @@ while rodar_programa:
         #Recebendo do usuário o nome do produto
         nome_produto = input("Digite o nome do Produto:")
 
+        if nome_produto == "":
+            print("\nNome vazio! Digite um produto válido !\n")
+            continue
+
         #Adicionado o nome do produto a lista
         if verifica_produto_lista(nome_produto):
             print("Produto já existe !",end="\n")
