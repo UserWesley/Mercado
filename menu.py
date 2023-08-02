@@ -4,6 +4,23 @@ lista_produto = ["Feijao", "Arroz"]
 #Flag para executar o menu repetidas vezes
 rodar_programa = True
 
+#Metodo para recebido de dados do usuario
+def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
+
+    try:
+        entrada_valor = int(entrada_texto)
+        return True, entrada_valor
+    
+    #Erro de conversão de texto para inteiro
+    except ValueError:
+        erro = "\nPor favor digite um número !\n\n"
+        return False, erro
+        
+    #Erro desconhecido
+    except Exception:
+        erro = "\nErro desconhecido !\n\n"
+        return False, erro
+
 #Função para adiocionar produtos
 def cadastrar_produtos(produto):
     if lista_produto.append(produto):
@@ -81,17 +98,21 @@ while rodar_programa:
     exibir_menu_produtos()
 
     #Escolha do usuário - Observo que o retorno é tipo string
-    escolha = input("Digite sua escolha : ")
+    escolha_menu = input("Digite sua escolha : ")
 
-    #Lembra de usar corretamente tratar o erro
-    try:
-        #Tentando converter tipo string para int
-        escolha_numero = int(escolha)
+    #Validar entrada do usuário
+    verificacao_entrada_usuario = entrada_dado_usuario_texto_para_inteiro(escolha_menu)
 
-    except:
-        print("Digite um valor dentro das opções!",end="\n\n")
+    #Verifica entrada do usuário
+    if verificacao_entrada_usuario[0]:
+
+        #Descompactar dados
+        *_, escolha_numero = verificacao_entrada_usuario
+
+    else:
+        print(verificacao_entrada_usuario[1])
         continue
-    
+
     #Condição para cadastrar Produto -- Programar para evitar itens duplicados
     if(escolha_numero == 1):
         
