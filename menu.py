@@ -215,27 +215,38 @@ while rodar_programa:
             #Chamando função para lista produtos
             lista_produtos_enumerate(lista_produto)
 
-            print("Atualizar Produto",end="\n\n")
+            print("\nAtualizar Produto\n\n")
             
             #recebendo codigo do produto que deseja alterar 
-            codigo_do_produto = input("digite o valor do codigo que deseja aleterar:")
-            try: 
-                #convertendo valor do string para inteiro
-                codigo_produto_inteiro= int(codigo_do_produto)
-            except:
-                print("digite algum valor correto")
+            codigo_do_produto = input("digite o valor do codigo que deseja alterar:")
+
+            codigo_produto_inteiro = entrada_dado_usuario_texto_para_inteiro(codigo_do_produto)
+
+            #Desempacotar
+            dado_valido, codigo_produto =codigo_produto_inteiro
+
+            if dado_valido:
+            
+                #verificando se o valor do indice existe
+                if verifica_valor_indice(codigo_produto):
+                    novo_nome_produto = input("Digite um novo nome para o produto :")
+                    
+                    if verifica_entrada_usuario_vazia(novo_nome_produto):
+                        print("Campo vazio")
+                        continue
+                    else:
+                        if alterar_produto(codigo_produto, novo_nome_produto):
+                            print("Produto alterado !")
+                        else:
+                            print("Produto não alterado")
+                else:
+                    print("valor codigo não existe")
+                    continue
+            else:
+                print(codigo_produto)
                 continue 
             
-            #verificando se o valor do indice existe
-            if codigo_produto_inteiro > len(lista_produto):
-                print("valor codigo não existe")
-
-            else:
-                novo_nome_produto = input("Digite um novo nome para o produto :")
-                if alterar_produto(codigo_produto_inteiro, novo_nome_produto):
-                    print("Produto alterado !")
-                else:
-                    print("Produto não alterado")
+            
                 
     #COndição para sair
     elif(escolha_numero == 6):
