@@ -49,10 +49,10 @@ def verifica_produto_lista(nome_produto):
 def alterar_produto(codigo_produto,novo_nome_produto):
     
     lista_produto[codigo_produto] = novo_nome_produto
-    if novo_nome_produto :
-        return False
-    else:
+    if novo_nome_produto is not None:
         return True
+    else:
+        return False
     
 #Remover produto
 def remover_produto(codigo_produto_excluido_inteiro):
