@@ -38,8 +38,8 @@ def apagar_todos_elementos(lista_produto):
     else:
         return False
 
-#Executando enquanto variável for True
-while rodar_programa: 
+#Função menu de produtos
+def exibir_menu_produtos():
 
     #Lista de Menu
     print("#########################\n","Digite seu Escolha",end ="\n\n")
@@ -49,6 +49,11 @@ while rodar_programa:
     print("4 - Excluir produto selecionado")
     print("5 - Atualizar Produto")
     print("6 - Sair", end="\n\n")
+
+#Executando enquanto variável for True
+while rodar_programa: 
+
+    exibir_menu_produtos()
 
     #Escolha do usuário - Observo que o retorno é tipo string
     escolha = input("Digite sua escolha : ")
