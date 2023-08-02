@@ -58,14 +58,12 @@ def alterar_produto(codigo_produto,novo_nome_produto):
 def remover_produto(codigo_produto_excluido_inteiro):
     #Adicionando indice para ajudar na removoção e evitar erros de digitação 
     #pop retorna valor tipo string Del não tem retorno
-    for indice, produto in enumerate(lista_produto):
-                        
-        #Procurador por valor na lista e removendo
-        if codigo_produto_excluido_inteiro == indice:
-            lista_produto.remove(lista_produto[indice])
-            return True 
-        else:
-            return False   
+    #Produto por valor na lista e removendo
+    print(lista_produto[codigo_produto_excluido_inteiro])    
+    if lista_produto.remove(lista_produto[codigo_produto_excluido_inteiro]):
+        return False 
+    else:
+        return True   
         
 #Função menu de produtos
 def exibir_menu_produtos():
@@ -162,6 +160,7 @@ while rodar_programa:
                     print("Valor não existe na lista")   
 
                 else:
+                    print(codigo_produto_excluido_inteiro)
                     if remover_produto(codigo_produto_excluido_inteiro):
                         print("Produto Excluido")
                     else :
