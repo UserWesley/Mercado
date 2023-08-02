@@ -7,7 +7,7 @@ rodar_programa = True
 #Metodo que verifica se o valor existe dentro do indice
 def verifica_valor_indice(numero_indice):
     
-    if numero_indice < len(lista_produto):
+    if numero_indice >=0 and numero_indice < len(lista_produto):
         return True
     else:
         return False
@@ -245,8 +245,6 @@ while rodar_programa:
             else:
                 print(codigo_produto)
                 continue 
-            
-            
                 
     #COndição para sair
     elif(escolha_numero == 6):
