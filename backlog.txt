@@ -1,0 +1,21 @@
+Produto
+CRUD de Produto
+Controle de estoque
+
+Funcionário
+CRUD de Funcionário
+
+Financeiro
+
+Caixa de atendimento
+
+Clube
+CRUD clientes
+Historico de Compras sem e com clube
+
+Venda Online
+
+app celular 
+
+Analitics
+

@@ -1,0 +1,3 @@
+Mercado da Esquina, que após 3 anos expandiu em uma rede presente em 4 cidades que vende online
+
+Simular quantidade acessos simultaneos, horário e datas 
