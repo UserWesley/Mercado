@@ -4,9 +4,17 @@ lista_produto = ["Feijao", "Arroz"]
 #Flag para executar o menu repetidas vezes
 rodar_programa = True
 
+#Metodo que verifica se o valor existe dentro do indice
+def verifica_valor_indice(numero_indice):
+    
+    if numero_indice < len(lista_produto):
+        return True
+    else:
+        return False
+    
 #Verifica entrada de usuário se é vazia
 def verifica_entrada_usuario_vazia(entrada_usuario):
-    if nome_produto == "":
+    if entrada_usuario == "":
         return True
     else:
         return False
@@ -27,7 +35,7 @@ def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
     except Exception:
         erro = "\nErro desconhecido !\n\n"
         return False, erro
-
+    
 #Função para adiocionar produtos
 def cadastrar_produtos(produto):
     if lista_produto.append(produto):
@@ -175,26 +183,27 @@ while rodar_programa:
             codigo_produto_excluido = input("Digite o código do produto que você deseja excluir :")
             
             #Tentando converter tipo string para int 
-            try:
-                codigo_produto_excluido_inteiro = int(codigo_produto_excluido)
+            codigo_produto_excluido_inteiro = entrada_dado_usuario_texto_para_inteiro(codigo_produto_excluido)
 
-            #Tratamento para coódigo em string ou outro caracter diferente !!!! EU sei que devemos tratar o erros, apenas testes
-            except:
-                print("Digite um código válido")
-                continue
+            #Desempacotar
+            resultado_dado_verificado, codigo_produto = codigo_produto_excluido_inteiro
 
-            else:
+            if resultado_dado_verificado:
+                
                 #Verifica se o código do produto recebido é maior do que a lista
-                if codigo_produto_excluido_inteiro > len(lista_produto):
-                    print("Valor não existe na lista")   
+                if verifica_valor_indice(codigo_produto):
 
-                else:
-                    print(codigo_produto_excluido_inteiro)
-                    if remover_produto(codigo_produto_excluido_inteiro):
+                    if remover_produto(codigo_produto):
                         print("Produto Excluido")
                     else :
                         print("Produto não excluido")
-                    
+                else:
+                    print("Digite um código válido")
+                    continue
+            else:
+                print(codigo_produto)
+                continue
+
     #Condição para atualizar produto
     elif(escolha_numero == 5):
        
