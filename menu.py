@@ -7,9 +7,9 @@ rodar_programa = True
 #Função para adiocionar produtos
 def cadastrar_produtos(produto):
     if lista_produto.append(produto):
-        return True
-    else:
         return False
+    else:
+        return True
 
 #Função lista produtos com enumerate
 def lista_produtos_enumerate(lista_produto):
@@ -38,6 +38,13 @@ def apagar_todos_elementos(lista_produto):
     else:
         return False
 
+#Método para verficar produto já existe na lista
+def verifica_produto_lista(nome_produto):
+    if nome_produto in lista_produto:
+        return True
+    else:
+        return False
+    
 #Função menu de produtos
 def exibir_menu_produtos():
 
@@ -52,7 +59,8 @@ def exibir_menu_produtos():
 
 #Executando enquanto variável for True
 while rodar_programa: 
-
+    
+    #Chamanado método para exibir menu de produtos
     exibir_menu_produtos()
 
     #Escolha do usuário - Observo que o retorno é tipo string
@@ -70,19 +78,19 @@ while rodar_programa:
     #Condição para cadastrar Produto -- Programar para evitar itens duplicados
     if(escolha_numero == 1):
         
-        print("Cadastro Produto",end="\n")
         #Recebendo do usuário o nome do produto
-        
         nome_produto = input("Digite o nome do Produto:")
+
         #Adicionado o nome do produto a lista
-        
-        if nome_produto in lista_produto:
-            print("Produto já esta na lista")
+        if verifica_produto_lista(nome_produto):
+            print("Produto já existe !",end="\n")
             continue
         
         else:
             if cadastrar_produtos(nome_produto):
                 print("Nome do Produto cadastrado:", nome_produto,"\n")
+            else:
+                print("Produto não cadastrado")
 
     #COndição para lista Produtos
     elif(escolha_numero == 2):
@@ -171,7 +179,6 @@ while rodar_programa:
                 for indice, produto in enumerate(lista_produto):
                     if indice == codigo_produto_inteiro:
                         lista_produto[indice] = input("digite o novo nome:")
-
 
     #COndição para sair
     elif(escolha_numero == 6):
