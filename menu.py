@@ -4,6 +4,13 @@ lista_produto = ["Feijao", "Arroz"]
 #Flag para executar o menu repetidas vezes
 rodar_programa = True
 
+#Verifica entrada de usuário se é vazia
+def verifica_entrada_usuario_vazia(entrada_usuario):
+    if nome_produto == "":
+        return True
+    else:
+        return False
+    
 #Metodo para recebido de dados do usuario
 def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
 
@@ -119,7 +126,7 @@ while rodar_programa:
         #Recebendo do usuário o nome do produto
         nome_produto = input("Digite o nome do Produto:")
 
-        if nome_produto == "":
+        if verifica_entrada_usuario_vazia(nome_produto):
             print("\nNome vazio! Digite um produto válido !\n")
             continue
 
@@ -188,7 +195,6 @@ while rodar_programa:
                     else :
                         print("Produto não excluido")
                     
-
     #Condição para atualizar produto
     elif(escolha_numero == 5):
        
