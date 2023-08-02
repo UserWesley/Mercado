@@ -59,11 +59,8 @@ def remover_produto(codigo_produto_excluido_inteiro):
     #Adicionando indice para ajudar na removoção e evitar erros de digitação 
     #pop retorna valor tipo string Del não tem retorno
     #Produto por valor na lista e removendo
-    print(lista_produto[codigo_produto_excluido_inteiro])    
-    if lista_produto.remove(lista_produto[codigo_produto_excluido_inteiro]):
-        return False 
-    else:
-        return True   
+    del lista_produto[codigo_produto_excluido_inteiro]
+    return True
         
 #Função menu de produtos
 def exibir_menu_produtos():
