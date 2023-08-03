@@ -40,8 +40,8 @@ def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
 def cadastrar_produtos(produto):
     if lista_produto.append(produto):
         return False
-    else:
-        return True
+    
+    return True
 
 #Função lista produtos com enumerate
 def lista_produtos_enumerate(lista_produto):
