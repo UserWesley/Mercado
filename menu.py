@@ -67,8 +67,8 @@ def apagar_todos_elementos(lista_produto):
 
     if not lista_produto:
         return True
-    else:
-        return False
+    
+    return False
 
 #Método para verficar produto já existe na lista
 def verifica_produto_lista(nome_produto):
