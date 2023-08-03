@@ -16,8 +16,8 @@ def verifica_valor_indice(numero_indice):
 def verifica_entrada_usuario_vazia(entrada_usuario):
     if entrada_usuario == "":
         return True
-    else:
-        return False
+
+    return False
     
 #Metodo para recebido de dados do usuario
 def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
