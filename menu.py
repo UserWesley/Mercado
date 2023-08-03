@@ -56,8 +56,8 @@ def lista_verifica_nulo(lista_produto):
 
     if not lista_produto:
         return True
-    else:
-        return False
+    
+    return False
 
 #Função apagar todas elementos
 def apagar_todos_elementos(lista_produto):
