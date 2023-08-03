@@ -9,8 +9,8 @@ def verifica_valor_indice(numero_indice):
     
     if numero_indice >=0 and numero_indice < len(lista_produto):
         return True
-    else:
-        return False
+    
+    return False
     
 #Verifica entrada de usuário se é vazia
 def verifica_entrada_usuario_vazia(entrada_usuario):
