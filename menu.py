@@ -74,8 +74,7 @@ def apagar_todos_elementos(lista_produto):
 def verifica_produto_lista(nome_produto):
     if nome_produto in lista_produto:
         return True
-    else:
-        return False
+    return False
 
 #Metodo para alterar valor da lista
 def alterar_produto(codigo_produto,novo_nome_produto):
