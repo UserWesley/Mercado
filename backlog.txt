@@ -1,4 +1,6 @@
 MVP?
+python e django não usa mvc - pesquisar arquitetura e diferença principalmente de banco de dados
+cdn para imagens
 Definir prioridade, dificuldade e tempo de execução  
 Depois definir sprint
 
