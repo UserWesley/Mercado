@@ -1,5 +1,14 @@
-#Lista de produto iniciando vazio
-lista_produto = ["Feijao", "Arroz"]
+#Lista de produto em tipo dicionario com atributos
+lista_produto = [
+    {
+        'nome_produto' : 'Feijão',
+        'preco' : '10.00'
+    },
+    {
+        'nome_produto': "Arroz",
+        'preco' : '11.00'
+    }
+]
 
 #Flag para executar o menu repetidas vezes
 rodar_programa = True
