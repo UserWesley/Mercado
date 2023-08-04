@@ -55,10 +55,11 @@ def cadastrar_produtos(produto):
 #Função lista produtos com enumerate
 def lista_produtos_enumerate(lista_produto):
     
-    print("Listar Produtos",end="\n\n")
+    print("\n#############################\nListar Produtos",end="\n\n")
     #listando todos os produtos da lista
     for indice,produto_elemento in enumerate(lista_produto):
-        print("Código",indice,"Produto :",produto_elemento)
+        print("Código :",indice,"\nNome do Produto :",produto_elemento['nome_produto'], 
+              "\nPreço do Produto : R$", produto_elemento['preco'],"\n#############\n")
 
 #FUnção verifica lista produto esta nulo ou não 
 def lista_verifica_nulo(lista_produto):
