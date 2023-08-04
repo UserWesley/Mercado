@@ -44,10 +44,35 @@ def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
     except Exception:
         erro = "\nErro desconhecido !\n\n"
         return False, erro
-    
+
+#Função para exibir valor cadastrado
+def exibir_produto_cadastrado(nome_produto, novo_preco):
+    print("\n\nProduto Cadastrado \n")
+    print("Nome do Produto cadastrado:", nome_produto,"\n")
+    print("Preço R$:", novo_preco,"\n")
+
+#Função para conferir entrada correta de valor do produto
+def verifica_entrada_preco_produto(preco_produto):
+
+    try:
+        novo_preco_produto = float(preco_produto)
+        print(novo_preco_produto)
+        return True, novo_preco_produto
+        
+    #Erro de conversão de texto para float
+    except ValueError:
+        erro = "\nPor favor digite um número !\n\n"
+        return False, erro
+        
+    #Erro desconhecido
+    except Exception:
+        erro = "\nErro desconhecido !\n\n"
+        return False, erro
+
 #Função para adiocionar produtos
-def cadastrar_produtos(produto):
-    if lista_produto.append(produto):
+def cadastrar_produtos(produto,preco):
+    novo_produto = {'nome_produto' : produto, 'preco' : preco}
+    if lista_produto.append(novo_produto):
         return False
     
     return True
@@ -143,20 +168,26 @@ while rodar_programa:
         #Recebendo do usuário o nome do produto
         nome_produto = input("Digite o nome do Produto:")
 
-        if verifica_entrada_usuario_vazia(nome_produto):
-            print("\nNome vazio! Digite um produto válido !\n")
+        #Recebendo o preço do nome do produto
+        preco_produto = input("Digite o preço do produto (11.11) R$ :")
+        
+        if (verifica_entrada_usuario_vazia(nome_produto)) or (verifica_entrada_usuario_vazia(preco_produto)):
+            print("\nAlgum campo vazio! Digite um  nome de produto válido e preço !\n")
             continue
 
         #Adicionado o nome do produto a lista
         if verifica_produto_lista(nome_produto):
             print("Produto já existe !",end="\n")
             continue
+
+        preco_valido,novo_preco = verifica_entrada_preco_produto(preco_produto)
+
+        if not preco_valido:
+            print("Nomeaclatura do preço errada !",end="\n")
+            continue
         
-        else:
-            if cadastrar_produtos(nome_produto):
-                print("Nome do Produto cadastrado:", nome_produto,"\n")
-            else:
-                print("Produto não cadastrado")
+        cadastrar_produtos(nome_produto, preco_produto)
+        exibir_produto_cadastrado(nome_produto, preco_produto)
 
     #COndição para lista Produtos
     elif(escolha_numero == 2):
