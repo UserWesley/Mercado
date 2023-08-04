@@ -36,9 +36,12 @@ def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
         return True, entrada_valor
     
     #Erro de conversão de texto para inteiro
-    except ValueError:
-        erro = "\nPor favor digite um número !\n\n"
-        return False, erro
+    except ValueError as erro:
+        mensagem_erro = "\nPor favor digite um número !"
+        nome_erro = erro.__class__.__name__
+        descricao_erro  = erro
+        
+        return False, mensagem_erro,nome_erro,descricao_erro
         
     #Erro desconhecido
     except Exception:
@@ -60,9 +63,12 @@ def verifica_entrada_preco_produto(preco_produto):
         return True, novo_preco_produto
         
     #Erro de conversão de texto para float
-    except ValueError:
-        erro = "\nPor favor digite um número !\n\n"
-        return False, erro
+    except ValueError as erro:
+        mensagem_erro = "\nPor favor digite neste padrão 12.12 !"
+        nome_erro = erro.__class__.__name__
+        descricao_erro  = erro
+        
+        return False, mensagem_erro,nome_erro,descricao_erro
         
     #Erro desconhecido
     except Exception:
@@ -112,14 +118,13 @@ def verifica_produto_lista(nome_produto):
     return False
 
 #Metodo para alterar valor da lista
-def alterar_produto(codigo_produto,novo_nome_produto):
+def alterar_produto(codigo_produto,novo_nome_produto, novo_preco):
     
-    lista_produto[codigo_produto] = novo_nome_produto
-    if novo_nome_produto is not None:
-        return True
+    lista_produto[codigo_produto]['nome_produto'] = novo_nome_produto
+    lista_produto[codigo_produto]['preco'] = novo_preco
     
-    return False
-    
+    return True
+
 #Remover produto
 def remover_produto(codigo_produto_excluido_inteiro):
     #Adicionando indice para ajudar na removoção e evitar erros de digitação 
@@ -159,7 +164,11 @@ while rodar_programa:
         *_, escolha_numero = verificacao_entrada_usuario
 
     else:
-        print(verificacao_entrada_usuario[1])
+        #Desempacotar dados
+        *_, mensagem_usuario, nome_erro, descricao_erro = verificacao_entrada_usuario
+        print(mensagem_usuario)
+        print("Nome do Erro :",nome_erro)
+        print("Descrição do Erro :",descricao_erro)
         continue
 
     #Condição para cadastrar Produto -- Programar para evitar itens duplicados
@@ -179,13 +188,24 @@ while rodar_programa:
         if verifica_produto_lista(nome_produto):
             print("Produto já existe !",end="\n")
             continue
-
-        preco_valido,novo_preco = verifica_entrada_preco_produto(preco_produto)
-
-        if not preco_valido:
-            print("Nomeaclatura do preço errada !",end="\n")
-            continue
         
+        #primeiro valor da lista, True or False para resultado valido
+        valida_entrada_preco_produto = verifica_entrada_preco_produto(preco_produto)
+        
+        if valida_entrada_preco_produto[0]:
+
+            #Descompactar dados
+            *_, preco_produto = valida_entrada_preco_produto
+
+        else:
+            print(preco_produto)
+            *_, mensagem_usuario, nome_erro, descricao_erro = valida_entrada_preco_produto
+            print(mensagem_usuario)
+            print("Nome do Erro :",nome_erro)
+            print("Descrição do Erro :",descricao_erro)
+            continue
+
+        print(preco_produto)
         cadastrar_produtos(nome_produto, preco_produto)
         exibir_produto_cadastrado(nome_produto, preco_produto)
 
@@ -260,31 +280,48 @@ while rodar_programa:
             #recebendo codigo do produto que deseja alterar 
             codigo_do_produto = input("digite o valor do codigo que deseja alterar:")
 
-            codigo_produto_inteiro = entrada_dado_usuario_texto_para_inteiro(codigo_do_produto)
+            validacao_dado_usuario_alteracao = entrada_dado_usuario_texto_para_inteiro(codigo_do_produto)
 
-            #Desempacotar
-            dado_valido, codigo_produto =codigo_produto_inteiro
+            #Primeiro valor do indice diz se é True para dado correto 
+            if validacao_dado_usuario_alteracao[0]:
 
-            if dado_valido:
+                #Desempacotar
+                dado_valido, codigo_produto = validacao_dado_usuario_alteracao
+
+                if dado_valido:
             
-                #verificando se o valor do indice existe
-                if verifica_valor_indice(codigo_produto):
-                    novo_nome_produto = input("Digite um novo nome para o produto :")
-                    
-                    if verifica_entrada_usuario_vazia(novo_nome_produto):
-                        print("Campo vazio")
-                        continue
-                    else:
-                        if alterar_produto(codigo_produto, novo_nome_produto):
+                    #verificando se o valor do indice existe
+                    if verifica_valor_indice(codigo_produto):
+                        novo_nome_produto = input("Digite um novo nome para o produto :")
+                        
+                        #Recebendo o preço do nome do produto
+                        preco_produto = input("Digite o preço do produto (11.11) R$ :")
+                        
+                        if verifica_entrada_usuario_vazia(novo_nome_produto) or verifica_entrada_usuario_vazia(preco_produto):
+                            print("Campo vazio do nome ou preço vazio")
+                            continue
+                        
+                        valida_entrada_preco_produto = verifica_entrada_preco_produto(preco_produto)
+
+                        #Valida retorno True numero correto
+                        if valida_entrada_preco_produto[0]:
+                            *_,novo_preco = valida_entrada_preco_produto 
+                            alterar_produto(codigo_produto, novo_nome_produto, novo_preco)
                             print("Produto alterado !")
+                        
                         else:
-                            print("Produto não alterado")
-                else:
-                    print("valor codigo não existe")
-                    continue
+                            *_, mensagem_usuario, nome_erro, descricao_erro = valida_entrada_preco_produto
+                            print(mensagem_usuario)
+                            print("Nome do Erro :",nome_erro)
+                            print("Descrição do Erro :",descricao_erro)
+                            continue
             else:
-                print(codigo_produto)
-                continue 
+                #Desempacotar dados
+                *_, mensagem_usuario, nome_erro, descricao_erro = validacao_dado_usuario_alteracao
+                print(mensagem_usuario)
+                print("Nome do Erro :",nome_erro)
+                print("Descrição do Erro :",descricao_erro)
+                continue
                 
     #COndição para sair
     elif(escolha_numero == 6):
