@@ -1,0 +1,97 @@
+- Um commit por função, Método com frase longas "explicitas"
+- Corriga o nome do commits 
+- Função ou metodo sem teste não sobe
+- Push após finalizado a funcionalidade
+- Documento do tipos não texto - Colocar na pasta correta - LSF
+- .gitIgnore
+
+
+Comandos em caso de dúvidas
+
+#Listando versão 
+git --version
+
+#Nome do usuário git
+git config --global user.name "SEU NOME"
+
+#Seu e-mail
+git config --global user.email seu@email
+
+#Seu editor
+git config --global core.editor nomeeditor
+
+#Listar dados de configuração do seu git
+git config --list
+
+#Criar projeto novo
+git init
+
+#Clonar projeto existente 
+git clone urlouendereco
+
+#status de diretório
+git status
+
+#Adicionar um ou mais arquivo ao stage /Nunca use o "git add .", ele envia tudo.
+#Evite add multiplos arquivo com diferentes funcionalidade de uma vez antes do comit
+git add nomearquivo
+git add nomearquivo nomearquivo2
+git add *.html
+git add .
+
+#Remover arquivo do stage add
+git reset -- NOMEARQUIVO
+
+#Remover modo iterativo
+git add -i
+
+#seleciona op 3 - Revert e digito o cod do arquivo que deseja remover 
+#e opção 2 Update para recolocar
+ 
+#Comitar - Utilize comites coeso, exemplo texto com info relevantes ou 
+git commit -m "Mensagem com significado"
+
+#ALterando mensagem do ultimo commit
+git commit -m "Nova mensagem" --amend 
+
+#Modo iterativo para alterar commit
+git rebase -i HEAD~3
+
+pick
+squash
+ 
+
+#recuperar arquivo apagado
+git checkout HEAD nomearquivo
+
+#Desfazer ultimos commit sem desfazer alteração do arquivo
+git reset --soft  HEAD~3
+
+#Desfazer ultimos commit e defazer arquivo
+git reset --hard HEAD~3
+
+#listar log
+git log
+
+#snapshot
+git checkout chavecommithash
+
+#atualizar
+git pull
+
+#enviar commit
+git push
+
+#chamar garbage
+git gc
+
+#Remover arquivo do commit para stage
+git reset -- nomearquivo
+
+#Apagar tudo
+git reset --HARD
+
+#Recuperar arquivo perdido
+#sha1 do ultimo log
+git reflog
+git checkout -b nomearquivo sha1
