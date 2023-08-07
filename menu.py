@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #Lista de produto em tipo dicionario com atributos
 lista_produto = [
     {
@@ -9,6 +10,11 @@ lista_produto = [
         'preco' : '11.00'
     }
 ]
+=======
+
+#Lista de produto iniciando vazio
+lista_produto = ["Feijao", "Arroz"]
+>>>>>>> Stashed changes
 
 #Flag para executar o menu repetidas vezes
 rodar_programa = True
