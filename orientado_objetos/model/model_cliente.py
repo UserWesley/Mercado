@@ -1,0 +1,3 @@
+#Classe que representa cliente que representa cliente criar rota de path
+class Cliente(Pessoa):
+    ...

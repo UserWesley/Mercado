@@ -1,0 +1,3 @@
+#Classe que representa funcionário herança de pessoa fazer rotas de arquivos
+class Funcionario(Pessoa):
+    ...
