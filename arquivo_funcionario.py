@@ -1,15 +1,19 @@
 #Lista de funcionario em tipo dicionario com atributos
 lista_funcionario = [
     {
-        "funcionario:" "\n\n"
-        "idade:" "\n\n"
-    }
-]
-[
+        "nome_funcionario" : "João",
+        "idade" : "15",
+        "cpf" : "12345678",
+        "cargo" :"Gerente"
+ 
+    },
+
+
     {
-        "cpf:" "\n\n"
-        "cargo" "\n\n"
-        
+        "nome_funcionario" : "Pedro",
+        "idade" : "29",
+        "cpf" : "12345678",
+        "cargo" :"Padeiro"       
     }
 
 ]
@@ -36,7 +40,6 @@ def verifica_entrada_usuario_vazia(entrada_usuario):
 #Metodo para recebido de dados do usuario
 def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
 
-     
     try:
         entrada_valor = int(entrada_texto)
         return True, entrada_valor
@@ -53,7 +56,7 @@ def entrada_dado_usuario_texto_para_inteiro(entrada_texto):
         return False, erro
     
     #Função para exibir valor cadastrado
-def exibir_funcionario_adcionado(nome_funcionario, idade, cpf, cargo):
+def exibir_funcionario_adicionado(nome_funcionario, idade, cpf, cargo):
     print("\n\nfuncionario cadastrado \n")
     print("Nome do funcionario cadastrado:", nome_funcionario,"\n")
     print("idade:", idade,"\n")
@@ -94,10 +97,9 @@ def lista_funcionario_enumerate(lista_funcionario):
 
  #listando todos os funcionarios da lista
     for indice, funcionario_elemento in enumerate(lista_funcionario):
-        print("Código :",indice,"\nNome do funcionario :",funcionario_elemento['nome_funcionario'], 
-              "\nidade funcionario : R$", funcionario_elemento['idade'],"\n#############\n"
-            
-             "\ncpf do funcionario :", funcionario_elemento['cpf'],"\n##############\n"
+        print("Código :",indice,"\nNome do funcionario :",funcionario_elemento["nome_funcionario"], 
+              "\nidade funcionario : R$", funcionario_elemento['idade'],
+              "\ncpf do funcionario :", funcionario_elemento['cpf'],
               "\ncargo do funcionario:", funcionario_elemento['cargo'], "\n##############")
 
 
@@ -143,20 +145,18 @@ def remover_funcionario(codigo_funcionario_excluido_inteiro):
     del lista_funcionario[codigo_funcionario_excluido_inteiro]
     return True
 
-
-
 #Função menu de funcionario
 def exibir_menu_funcionario():
 
 #lista menu funcionario
 
     print("#########################\n","Digite seu Escolha",end ="\n\n")
-    print("1 - cadastrar funcionario")
-    print("2 - listar funcionarios")
-    print("3 - excluir funcionario ")
-    print("4 - excluir funcionario especifico")
-    print("5 - atualizar funcionario")
-    print("6 - sair", end="\n\n")
+    print("1 - Cadastrar funcionario")
+    print("2 - Listar funcionarios")
+    print("3 - Excluir funcionario ")
+    print("4 - Excluir funcionario especifico")
+    print("5 - Atualizar funcionario")
+    print("6 - Sair", end="\n\n")
 
 #Executando enquanto variável for True
 while rodar_programa: 
@@ -216,7 +216,7 @@ while rodar_programa:
             continue
                 
         adcionar_funcionario(nome_funcionario, idade_funcionario, cpf_funcionario, cargo_funcionario)
-        exibir_funcionario_adcionado(nome_funcionario, idade_funcionario, cargo_funcionario, cargo_funcionario)
+        exibir_funcionario_adicionado(nome_funcionario, idade_funcionario, cargo_funcionario, cargo_funcionario)
 
     #COndição para lista funcionario
     elif(escolha_numero == 2):
