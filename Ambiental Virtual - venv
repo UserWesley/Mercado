@@ -1,0 +1,13 @@
+#Comando para iniciar ambiente virtual
+python3 -m venv ambiente_virtual
+
+#Ativar o ambiente Virtual
+. ambiente_virtual/bin/activate
+
+#Ou
+source ambiente_virtual/bin/activate
+
+#Desativar o ambiente virtual
+deactivate
+
+
