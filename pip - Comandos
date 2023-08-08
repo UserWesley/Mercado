@@ -1,0 +1,24 @@
+
+#Instalar
+pip install pep8
+
+#Em Caso de erro
+python -m pip install pep8
+
+#Instalar pacote especifico
+python nome_pacote==0.0.0
+
+#Listar todas versões dispónivel do pacote #Experimental
+pip index versions pep8
+
+#Desistalar pacote
+pip uninstall pep8
+
+#Lista pacotes instalados
+pip freeze
+
+#Gerar arquivos Requirements
+pip freeze > requirements.txt
+
+#Instalando todos pacotes do requeriments
+pip install -r requirements.txt

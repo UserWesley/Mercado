@@ -95,3 +95,13 @@ git reset --HARD
 #sha1 do ultimo log
 git reflog
 git checkout -b nomearquivo sha1
+
+#Trocar branch
+git checkout nomebranch
+
+#Listar todas branch
+git branch 
+
+#Push em outro branch
+git push --set-upstream origin nome_branch
+
